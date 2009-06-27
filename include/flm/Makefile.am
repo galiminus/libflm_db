@@ -1,4 +1,4 @@
-includedir = $(prefix)/include/
+includedir = $(prefix)/include/flm/
 
 include_HEADERS =			\
 db.h					\
