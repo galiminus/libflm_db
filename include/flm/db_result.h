@@ -17,8 +17,8 @@
 #ifndef _FLM_DB_RESULT_H_
 # define _FLM_DB_RESULT_H_
 
-#include <flm_buffer.h>
-#include <flm_object.h>
+#include <flm/buffer.h>
+#include <flm/object.h>
 
 struct flm_db_result;
 typedef const char *(*flm_db_result__get_f)	\

@@ -1,2 +1,3 @@
 SUBDIRS=src			\
-	src/pgsql
+	src/pgsql		\
+	include/flm

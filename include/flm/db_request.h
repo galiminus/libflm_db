@@ -14,44 +14,49 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifndef _FLM_PGSQL_RESULT_H_
-# define _FLM_PGSQL_RESULT_H_
+#ifndef _FLM_DB_REQUEST_H_
+# define _FLM_DB_REQUEST_H_
 
-#include <libpq-fe.h>
+#include <stdarg.h>
 
-#include "flm_pgsql.h"
-#include "flm_db_result.h"
+#include <flm/buffer.h>
+#include <flm/object.h>
 
-typedef struct flm_pgsql_result
+typedef struct flm_db_request
 {
 	/* inheritance */
-	flm_db_result db_result;
+	flm_object object;
 	union {
-		struct flm_object *		object;
-		struct flm_db_result *		db_result;
-		struct flm_pgsql_result *	pgsql_result;
+		struct flm_object *	object;
+		struct flm_db_request *	db_request;
 	} super;
 
-	PGresult *	pg_result;
+	flm_buffer *			content;
+	flm_object *			data;
+	int				id;
+} flm_db_request;
 
-} flm_pgsql_result;
+#define FLM_DB_REQUEST(_object) FLM_CAST(_object,db_request)
 
-#define FLM_PGSQL_RESULT(_object) FLM_CAST(_object,pgsql_result)
+flm_db_request *
+flm_db_request_new (int, flm_object *, const char *, ...);
 
-flm_pgsql_result *
-flm_pgsql_result_new (int, flm_pgsql *);
+flm_db_request *
+flm_db_request_vnew (int, flm_object *, const char *, va_list);
 
 /* protected */
 int
-flm_pgsql_result__init (flm_pgsql_result *, int, flm_pgsql *);
+flm_db_request__init (flm_db_request *, int, flm_object *,	\
+		      const char *, va_list);
 
 void
-flm_pgsql_result__destruct (flm_pgsql_result *);
+flm_db_request__destruct (flm_db_request *);
 
-const char *
-flm_pgsql_result__get (flm_pgsql_result *, size_t, const char *);
+/* public */
+flm_buffer *
+flm_db_request_content (flm_db_request *);
 
-size_t
-flm_pgsql_result__nbrow (flm_pgsql_result *);
+int
+flm_db_request_id (flm_db_request *);
 
-#endif /* !_FLM_PGSQL_RESULT_H_ */
+#endif /* !_FLM_DB_REQUEST_H_ */

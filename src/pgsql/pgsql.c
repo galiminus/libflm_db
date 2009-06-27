@@ -14,9 +14,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "flm_alloc.h"
-#include "flm_pgsql.h"
-#include "flm_pgsql_result.h"
+#include "flm/alloc.h"
+#include "flm/pgsql.h"
+#include "flm/pgsql_result.h"
 
 flm_pgsql *
 flm_pgsql_new (const char * host,

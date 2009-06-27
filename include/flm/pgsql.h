@@ -14,49 +14,48 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifndef _FLM_DB_REQUEST_H_
-# define _FLM_DB_REQUEST_H_
+#ifndef _FLM_PGSQL_H_
+# define _FLM_PGSQL_H_
 
-#include <stdarg.h>
+#include <libpq-fe.h>
 
-#include <flm_buffer.h>
-#include <flm_object.h>
+#include "flm/db_base.h"
 
-typedef struct flm_db_request
+typedef struct flm_pgsql
 {
 	/* inheritance */
-	flm_object object;
+	flm_db db;
 	union {
 		struct flm_object *	object;
-		struct flm_db_request *	db_request;
+		struct flm_io *		io;
+		struct flm_db *		db;
+		struct flm_pgsql *	pgsql;
 	} super;
 
-	flm_buffer *			content;
-	flm_object *			data;
-	int				id;
-} flm_db_request;
+	PGconn *	pgconn;
+} flm_pgsql;
 
-#define FLM_DB_REQUEST(_object) FLM_CAST(_object,db_request)
+#define FLM_PGSQL(_object) FLM_CAST(_object,list)
 
-flm_db_request *
-flm_db_request_new (int, flm_object *, const char *, ...);
-
-flm_db_request *
-flm_db_request_vnew (int, flm_object *, const char *, va_list);
+flm_pgsql *
+flm_pgsql_new (const char *, const char *,			\
+	       const char *, const char *, const char *);
 
 /* protected */
 int
-flm_db_request__init (flm_db_request *, int, flm_object *,	\
-		      const char *, va_list);
+flm_pgsql__init (flm_pgsql *, const char *, const char *,	\
+		 const char *, const char *, const char *);
 
 void
-flm_db_request__destruct (flm_db_request *);
+flm_pgsql__destruct (flm_pgsql *);
 
-/* public */
-flm_buffer *
-flm_db_request_content (flm_db_request *);
+void
+flm_pgsql__read (flm_pgsql *);
 
-int
-flm_db_request_id (flm_db_request *);
+void
+flm_pgsql__write (flm_pgsql *);
 
-#endif /* !_FLM_DB_REQUEST_H_ */
+PGconn *
+flm_pgsql__conn (flm_pgsql *);
+
+#endif /* !_FLM_PGSQL_H_ */

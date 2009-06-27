@@ -14,9 +14,8 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "flm_alloc.h"
-#include "flm_db.h"
-#include "flm_monitor.h"
+#include "flm/alloc.h"
+#include "flm/db.h"
 
 flm_db *
 flm_db_new (int fd)

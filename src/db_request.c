@@ -14,8 +14,8 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "flm_alloc.h"
-#include "flm_db_request.h"
+#include "flm/alloc.h"
+#include "flm/db_request.h"
 
 flm_db_request *
 flm_db_request_new (int id,
