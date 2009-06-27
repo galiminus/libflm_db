@@ -17208,7 +17208,7 @@ fi
 done
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/pgsql/Makefile include/flm/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/pgsql/Makefile src/sqlite/Makefile include/flm/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -18208,6 +18208,7 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/pgsql/Makefile") CONFIG_FILES="$CONFIG_FILES src/pgsql/Makefile" ;;
+    "src/sqlite/Makefile") CONFIG_FILES="$CONFIG_FILES src/sqlite/Makefile" ;;
     "include/flm/Makefile") CONFIG_FILES="$CONFIG_FILES include/flm/Makefile" ;;
 
   *) { { $as_echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5

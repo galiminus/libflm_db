@@ -6,4 +6,6 @@ db_base.h				\
 db_request.h				\
 db_result.h				\
 pgsql.h					\
-pgsql_result.h
+pgsql_result.h				\
+sqlite.h				\
+sqlite_result.h
