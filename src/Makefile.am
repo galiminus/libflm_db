@@ -1,9 +1,9 @@
-lib_LTLIBRARIES = libflm.la
+lib_LTLIBRARIES = libflm_db.la
 
-libflm_la_SOURCES =			\
+libflm_db_la_SOURCES =			\
 db.c					\
 db_request.c				\
 db_result.c
 
-libflm_la_CFLAGS = -W -Wall -I../include/
-libflm_la_LDFLAGS = -lflm_io -lflm
+libflm_db_la_CFLAGS = -W -Wall -I../include/
+libflm_db_la_LDFLAGS = -lflm_io -lflm

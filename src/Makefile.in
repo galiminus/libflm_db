@@ -67,13 +67,13 @@ am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
 am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
-libflm_la_LIBADD =
-am_libflm_la_OBJECTS = libflm_la-db.lo libflm_la-db_request.lo \
-	libflm_la-db_result.lo
-libflm_la_OBJECTS = $(am_libflm_la_OBJECTS)
-libflm_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libflm_la_CFLAGS) \
-	$(CFLAGS) $(libflm_la_LDFLAGS) $(LDFLAGS) -o $@
+libflm_db_la_LIBADD =
+am_libflm_db_la_OBJECTS = libflm_db_la-db.lo \
+	libflm_db_la-db_request.lo libflm_db_la-db_result.lo
+libflm_db_la_OBJECTS = $(am_libflm_db_la_OBJECTS)
+libflm_db_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libflm_db_la_CFLAGS) \
+	$(CFLAGS) $(libflm_db_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -87,8 +87,8 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(libflm_la_SOURCES)
-DIST_SOURCES = $(libflm_la_SOURCES)
+SOURCES = $(libflm_db_la_SOURCES)
+DIST_SOURCES = $(libflm_db_la_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -207,14 +207,14 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-lib_LTLIBRARIES = libflm.la
-libflm_la_SOURCES = \
+lib_LTLIBRARIES = libflm_db.la
+libflm_db_la_SOURCES = \
 db.c					\
 db_request.c				\
 db_result.c
 
-libflm_la_CFLAGS = -W -Wall -I../include/
-libflm_la_LDFLAGS = -lflm_io -lflm
+libflm_db_la_CFLAGS = -W -Wall -I../include/
+libflm_db_la_LDFLAGS = -lflm_io -lflm
 all: all-am
 
 .SUFFIXES:
@@ -280,8 +280,8 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libflm.la: $(libflm_la_OBJECTS) $(libflm_la_DEPENDENCIES) 
-	$(libflm_la_LINK) -rpath $(libdir) $(libflm_la_OBJECTS) $(libflm_la_LIBADD) $(LIBS)
+libflm_db.la: $(libflm_db_la_OBJECTS) $(libflm_db_la_DEPENDENCIES) 
+	$(libflm_db_la_LINK) -rpath $(libdir) $(libflm_db_la_OBJECTS) $(libflm_db_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -289,9 +289,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libflm_la-db.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libflm_la-db_request.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libflm_la-db_result.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libflm_db_la-db.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libflm_db_la-db_request.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libflm_db_la-db_result.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -314,26 +314,26 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
 
-libflm_la-db.lo: db.c
-@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_la_CFLAGS) $(CFLAGS) -MT libflm_la-db.lo -MD -MP -MF $(DEPDIR)/libflm_la-db.Tpo -c -o libflm_la-db.lo `test -f 'db.c' || echo '$(srcdir)/'`db.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libflm_la-db.Tpo $(DEPDIR)/libflm_la-db.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='db.c' object='libflm_la-db.lo' libtool=yes @AMDEPBACKSLASH@
+libflm_db_la-db.lo: db.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_db_la_CFLAGS) $(CFLAGS) -MT libflm_db_la-db.lo -MD -MP -MF $(DEPDIR)/libflm_db_la-db.Tpo -c -o libflm_db_la-db.lo `test -f 'db.c' || echo '$(srcdir)/'`db.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libflm_db_la-db.Tpo $(DEPDIR)/libflm_db_la-db.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='db.c' object='libflm_db_la-db.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_la_CFLAGS) $(CFLAGS) -c -o libflm_la-db.lo `test -f 'db.c' || echo '$(srcdir)/'`db.c
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_db_la_CFLAGS) $(CFLAGS) -c -o libflm_db_la-db.lo `test -f 'db.c' || echo '$(srcdir)/'`db.c
 
-libflm_la-db_request.lo: db_request.c
-@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_la_CFLAGS) $(CFLAGS) -MT libflm_la-db_request.lo -MD -MP -MF $(DEPDIR)/libflm_la-db_request.Tpo -c -o libflm_la-db_request.lo `test -f 'db_request.c' || echo '$(srcdir)/'`db_request.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libflm_la-db_request.Tpo $(DEPDIR)/libflm_la-db_request.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='db_request.c' object='libflm_la-db_request.lo' libtool=yes @AMDEPBACKSLASH@
+libflm_db_la-db_request.lo: db_request.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_db_la_CFLAGS) $(CFLAGS) -MT libflm_db_la-db_request.lo -MD -MP -MF $(DEPDIR)/libflm_db_la-db_request.Tpo -c -o libflm_db_la-db_request.lo `test -f 'db_request.c' || echo '$(srcdir)/'`db_request.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libflm_db_la-db_request.Tpo $(DEPDIR)/libflm_db_la-db_request.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='db_request.c' object='libflm_db_la-db_request.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_la_CFLAGS) $(CFLAGS) -c -o libflm_la-db_request.lo `test -f 'db_request.c' || echo '$(srcdir)/'`db_request.c
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_db_la_CFLAGS) $(CFLAGS) -c -o libflm_db_la-db_request.lo `test -f 'db_request.c' || echo '$(srcdir)/'`db_request.c
 
-libflm_la-db_result.lo: db_result.c
-@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_la_CFLAGS) $(CFLAGS) -MT libflm_la-db_result.lo -MD -MP -MF $(DEPDIR)/libflm_la-db_result.Tpo -c -o libflm_la-db_result.lo `test -f 'db_result.c' || echo '$(srcdir)/'`db_result.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libflm_la-db_result.Tpo $(DEPDIR)/libflm_la-db_result.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='db_result.c' object='libflm_la-db_result.lo' libtool=yes @AMDEPBACKSLASH@
+libflm_db_la-db_result.lo: db_result.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_db_la_CFLAGS) $(CFLAGS) -MT libflm_db_la-db_result.lo -MD -MP -MF $(DEPDIR)/libflm_db_la-db_result.Tpo -c -o libflm_db_la-db_result.lo `test -f 'db_result.c' || echo '$(srcdir)/'`db_result.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libflm_db_la-db_result.Tpo $(DEPDIR)/libflm_db_la-db_result.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='db_result.c' object='libflm_db_la-db_result.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_la_CFLAGS) $(CFLAGS) -c -o libflm_la-db_result.lo `test -f 'db_result.c' || echo '$(srcdir)/'`db_result.c
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libflm_db_la_CFLAGS) $(CFLAGS) -c -o libflm_db_la-db_result.lo `test -f 'db_result.c' || echo '$(srcdir)/'`db_result.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
