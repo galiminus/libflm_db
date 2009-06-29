@@ -20,6 +20,7 @@ AC_PROG_RANLIB
 AC_PROG_LIBTOOL
 
 # Checks for libraries.
+AC_CHECK_LIB([flm], [flm_object__init])
 AC_CHECK_LIB([flm_io], [flm_io_new])
 AC_CHECK_LIB([pq], [PQsetdbLogin])
 

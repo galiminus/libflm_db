@@ -12,6 +12,9 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
+/* Define to 1 if you have the `flm' library (-lflm). */
+#undef HAVE_LIBFLM
+
 /* Define to 1 if you have the `flm_io' library (-lflm_io). */
 #undef HAVE_LIBFLM_IO
 
