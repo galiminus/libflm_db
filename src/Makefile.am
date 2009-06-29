@@ -6,4 +6,4 @@ db_request.c				\
 db_result.c
 
 libflm_la_CFLAGS = -W -Wall -I../include/
-libflm_la_LDFLAGS = -lflm_io
+libflm_la_LDFLAGS = -lflm_io -lflm
