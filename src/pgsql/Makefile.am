@@ -5,4 +5,4 @@ pgsql.c				\
 pgsql_result.c
 
 libflm_pgsql_la_CFLAGS = -W -Wall -I../../include/
-libflm_pgsql_la_LDFLAGS = -lpq
+libflm_pgsql_la_LDFLAGS = -lpq -lflm -lflm_db
