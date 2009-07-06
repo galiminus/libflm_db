@@ -15,7 +15,7 @@
  */
 
 #include "flm/alloc.h"
-#include "flm/pgsql.h"
+#include "flm/pgsql_base.h"
 #include "flm/pgsql_result.h"
 
 flm_pgsql *

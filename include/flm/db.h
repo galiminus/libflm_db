@@ -24,8 +24,6 @@ extern "C" {
 #include "flm/db_base.h"
 #include "flm/db_request.h"
 #include "flm/db_result.h"
-#include "flm/pgsql.h"
-#include "flm/pgsql_result.h"
 
 #ifdef __cplusplus
 }

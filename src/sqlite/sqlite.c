@@ -15,7 +15,7 @@
  */
 
 #include "flm/alloc.h"
-#include "flm/sqlite.h"
+#include "flm/sqlite_base.h"
 #include "flm/sqlite_result.h"
 
 flm_sqlite *

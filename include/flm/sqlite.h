@@ -17,40 +17,15 @@
 #ifndef _FLM_SQLITE_H_
 # define _FLM_SQLITE_H_
 
-#include "sqlite3.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#include "flm/db_base.h"
+#include "flm/sqlite_base.h"
+#include "flm/sqlite_result.h"
 
-typedef struct flm_sqlite
-{
-	/* inheritance */
-	flm_db db;
-	union {
-		struct flm_object *	object;
-		struct flm_io *		io;
-		struct flm_db *		db;
-		struct flm_sqlite *	sqlite;
-	} super;
-
-	sqlite3 *	file;
-} flm_sqlite;
-
-#define FLM_SQLITE(_object) FLM_CAST(_object,list)
-
-flm_sqlite *
-flm_sqlite_new (const char *);
-
-/* protected */
-int
-flm_sqlite__init (flm_sqlite *, const char *);
-
-void
-flm_sqlite__destruct (flm_sqlite *);
-
-void
-flm_sqlite__read (flm_sqlite *);
-
-void
-flm_sqlite__write (flm_sqlite *);
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !_FLM_SQLITE_H_ */

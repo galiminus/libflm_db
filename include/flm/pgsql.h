@@ -17,45 +17,15 @@
 #ifndef _FLM_PGSQL_H_
 # define _FLM_PGSQL_H_
 
-#include <libpq-fe.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#include "flm/db_base.h"
+#include "flm/pgsql_base.h"
+#include "flm/pgsql_result.h"
 
-typedef struct flm_pgsql
-{
-	/* inheritance */
-	flm_db db;
-	union {
-		struct flm_object *	object;
-		struct flm_io *		io;
-		struct flm_db *		db;
-		struct flm_pgsql *	pgsql;
-	} super;
-
-	PGconn *	pgconn;
-} flm_pgsql;
-
-#define FLM_PGSQL(_object) FLM_CAST(_object,list)
-
-flm_pgsql *
-flm_pgsql_new (const char *, const char *,			\
-	       const char *, const char *, const char *);
-
-/* protected */
-int
-flm_pgsql__init (flm_pgsql *, const char *, const char *,	\
-		 const char *, const char *, const char *);
-
-void
-flm_pgsql__destruct (flm_pgsql *);
-
-void
-flm_pgsql__read (flm_pgsql *);
-
-void
-flm_pgsql__write (flm_pgsql *);
-
-PGconn *
-flm_pgsql__conn (flm_pgsql *);
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !_FLM_PGSQL_H_ */
